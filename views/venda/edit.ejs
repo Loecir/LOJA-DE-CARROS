@@ -1,0 +1,131 @@
+<%- include('../cabecalho') -%>
+<section class="content">
+    <div class="container-fluid">
+        <div class="block-header">
+            <h2>VENDA</h2>
+        </div>
+        <!-- Horizontal Layout -->
+        <div class="row clearfix">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <div class="card">
+                    <div class="header">
+                        <h2>
+                            EDITAR VENDA
+                        </h2>
+                    </div>
+                    <div class="body">
+                        <form class="form-horizontal" method="POST" enctype="multipart/form-data">
+                            <div class="row clearfix">
+                                    <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                        <label for="nome">ID</label>
+                                    </div>
+                                    <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="text" readonly name="id" id="id" class="form-control" placeholder="Id da modelo" value="<%=venda._id%>" >
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label for="titulo">Título da Venda</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="text" name="titulo" id="titulo" class="form-control"
+                                                placeholder="Título da Venda" value="<%=venda.titulo%>">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label for="sinopse">Descrição</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <textarea name="sinopse" id="sinopse" class="form-control"
+                                                placeholder="Descrição"><%=venda.sinopse%></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label for="foto">Foto da Venda</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <input type="file" required name="foto" id="foto" class="form-control"
+                                                placeholder="Foto da Venda">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label for="marca">Marca</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <select name="marca">
+                                                <% Marcas.forEach(function(marca){ %>
+                                                    <option <%=venda.marca._id.toString() == marca._id.toString()?"selected":""  %> value="<%=marca._id%>"><%=marca.nome%></option>
+                                                <%});%>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label for="modelo">Modelo</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <select name="modelo">
+                                                <% Modelos.forEach(function(modelo){ %>
+                                                    <option <%=venda.modelo._id.toString() == modelo._id.toString()?"selected":""  %> value="<%=modelo._id%>"><%=modelo.nome%></option>
+                                                <%});%>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-2 col-md-2 col-sm-4 col-xs-5 form-control-label">
+                                    <label for="carros">Carro</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-8 col-xs-7">
+                                    <div class="form-group">
+                                        <div class="form-line">
+                                            <select name="carros" multiple>
+                                                <% Carros.forEach(function(carro){ %>
+                                                    <option <%=venda.carros.toString().indexOf(carro._id.toString())!=-1?"selected":""%> value="<%=carro._id%>"><%=carro.nome%></option>
+                                                <%});%>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row clearfix">
+                                <div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-4 col-xs-offset-5">
+                                    <button type="clear" class="btn btn-primary m-t-15 waves-effect">Limpar</button>
+                                    <button type="submit" class="btn btn-primary m-t-15 waves-effect">Cadastrar</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- #END# Horizontal Layout -->
+    </div>
+</section>
+<%- include('../rodape') -%>
